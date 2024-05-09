@@ -1,0 +1,68 @@
+
+/* Başlıklar */
+
+h1
+{
+    margin: 20px;
+    text-align: center;
+    color:crimson;
+    font-size: 50px;
+}
+
+
+h3
+{
+    margin-top: 20px;
+    text-align: left;
+    color: rgb(246, 169, 16);
+}
+
+
+.sorunumber
+{
+    font-weight: bold;
+    color: rgb(51, 50, 50);
+}
+
+
+
+
+/* Hesaplama Butonu */ 
+
+#hesaplamabuttondiv
+{
+    text-align: center;
+}
+
+#hesaplamabutton
+{
+    margin-top: 5%;
+    width: 200px;
+    height: 50px;
+    border: 2px solid rgb(101, 148, 148);
+    border-radius: 20px;
+
+    background-color:rgb(246, 169, 16);
+    font-weight: bold;
+    color: rgb(254, 254, 254);
+    text-align: center;
+}
+
+
+
+/* Sonuç Metinleri */
+
+#sonbaslik
+{
+    margin-bottom: 20px; margin-top: 80px;
+    font-size: 30px;
+    color:rgb(242, 167, 17);
+    ;
+}
+
+#sonucmetni
+{
+    margin-top: 20px;
+    font-family
+    :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

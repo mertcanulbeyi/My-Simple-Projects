@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ne Kadar İyisin</title>
+
+    <!-- Bootsrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div class="container">
+
+        <!--Genel Başlık Satırı-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>TOPLUMSAL KİŞİLİK TESTİ</h1>
+            </div>
+        </div>
+
+
+        <!-- Uygulama Başlığı (Ne Kadar İyisin?)-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Ne Kadar İyisin?</h3>
+            </div>
+        </div>
+
+
+
+        <form method="POST" name="f">
+
+
+
+
+            <!-- Sayısal Değerli Sorular -->
+
+            <div class="row my-4">
+                <div class="col-sm-12">
+                    <p class="sorubaslik">
+                        <span class="sorunumber">Soru 1:</span> Zor durumda olan insanlara yardım etmek için elimden geleni yaparım. 
+                    </p>
+                    <input type="radio" name="soru1" value="5"> Kesinlikle Yaparım <br>
+                    <input type="radio" name="soru1" value="4"> Yaparım <br>
+                    <input type="radio" name="soru1" value="3"> Müsait olursam Yaparım <br>
+                    <input type="radio" name="soru1" value="2"> Canım istersen Yaparım <br>
+                    <input type="radio" name="soru1" value="1"> Asla Yapmam, kendileri yapsın <br>
+                </div>
+            </div>
+
+
+
+            <div class="row my-5">
+                <div class="col-sm-12">
+                    <p class="sorubaslik">
+                        <span class="sorunumber">Soru 2:</span> Çevremdeki insanların duygularına karşı hassasım.
+                    </p>
+                    <input type="radio" name="soru2" value="5"> Kesinlikle<br>
+                    <input type="radio" name="soru2" value="4"> Öyleyimdir<br>
+                    <input type="radio" name="soru2" value="3"> Sanırım <br>
+                    <input type="radio" name="soru2" value="2"> Bazılarıan Göre <br>
+                    <input type="radio" name="soru2" value="1"> Değilim <br>
+                </div>
+            </div>
+            
+
+
+            <div class="row my-5">
+                <div class="col-sm-12">
+                    <p class="sorubaslik">
+                        <span class="sorunumber">Soru 3:</span> Toplum için faydalı olacak şekilde zamanımı ve enerjimi harcarım.
+                    </p>
+                    <input type="radio" name="soru3" value="5"> Evet, her zaman.<br>
+                    <input type="radio" name="soru3" value="4"> Evet, bazen.<br>
+                    <input type="radio" name="soru3" value="3"> Bazıları Göre <br>
+                    <input type="radio" name="soru3" value="2"> Hayır, pek değil <br>
+                    <input type="radio" name="soru3" value="1"> Değilim <br>
+                </div>
+            </div>
+
+
+
+            <div class="row my-5">
+                <div class="col-sm-12">
+                    <p class="sorubaslik">
+                        <span class="sorunumber">Soru 4:</span> Adil ve eşitlikçi bir toplum için mücadele ederim.
+                    </p>
+                    <input type="radio" name="soru4" value="5"> Kesinlikle Ederim<br>
+                    <input type="radio" name="soru4" value="4"> Ederim<br>
+                    <input type="radio" name="soru4" value="3"> Müsaitsem Ederim <br>
+                    <input type="radio" name="soru4" value="2"> Çoğunlukla Etmem <br>
+                    <input type="radio" name="soru4" value="1"> Hiç Etmem <br>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- Cevaplı Sorular Başlıyor -->
+
+            <div class="row my-5">
+                <div class="col-sm-12">
+                    <p class="sorubaslik">
+                        <span class="sorunumber">Soru 5:</span> Bir haksızlık gördüğünüzde ne yaparsınız?
+                    </p>
+                    <input type="radio" name="soru5" value="5"> Hemen müdahale ederim ve karşı çıkarım.<br>
+                    <input type="radio" name="soru5" value="4"> Sessiz kalırım ama içimden tepki gösteririm.<br>
+                    <input type="radio" name="soru5" value="3"> Kendi işime bakarım. <br>
+                    <input type="radio" name="soru5" value="2"> Haklı olup olmadığını sorgularım. <br>
+                    <input type="radio" name="soru5" value="1"> Karşımdakinin kendi sorununu çözmesi gerektiğini düşünürüm. <br>
+                </div>
+            </div>
+
+
+
+            <div class="row my-5">
+                <div class="col-sm-12">
+                    <p class="sorubaslik">
+                        <span class="sorunumber">Soru 6:</span> Birinin duygularını incittiğinizi fark ettiğinizde ne yaparsınız?
+                    </p>
+                    <input type="radio" name="soru6" value="5"> Hemen özür diler, hatamı telafi etmeye çalışırım ve duygularını onarım. <br>
+                    <input type="radio" name="soru6" value="4"> Kendimi kötü hissederim, ancak özür dilemekte zorlanırım. <br>
+                    <input type="radio" name="soru6" value="3"> Önemsemem ve konuyu değiştirmeye çalışırım. <br>
+                    <input type="radio" name="soru6" value="2"> Kendimi savunurum ve hata yapmadığımı ispatlamaya çalışırım.<br>
+                    <input type="radio" name="soru6" value="1"> Karşımdaki kişinin abarttığını ve hassas davrandığını düşünürüm. <br>
+                </div>
+            </div>
+
+
+
+            <div class="row my-5">
+                <div class="col-sm-12">
+                    <p class="sorubaslik">
+                        <span class="sorunumber">Soru 7:</span> Farklı etnik köken, din, dil ve cinsiyetten insanlara karşı hoşgörülü ve saygılı mısınız??
+                    </p>
+                    <input type="radio" name="soru7" value="5"> Evet, her insana eşit değer veririm ve farklılıklara saygı duyarım. <br>
+                    <input type="radio" name="soru7" value="4"> Farklılıklara açık olmaya çalışırım, ancak bazı önyargılarım olabilir. <br>
+                    <input type="radio" name="soru7" value="3"> Bazı gruplara karşı önyargılarım var ve bunu kabul ediyorum. <br>
+                    <input type="radio" name="soru7" value="2"> Farklı gruplara karşı hoşgörüsüz ve saygısız davranabilirim.<br>
+                    <input type="radio" name="soru7" value="1"> Hayır, bu konularla ilgilenmiyorum ve kendi hayatıma odaklanıyorum. <br>
+                </div>
+            </div>
+
+            
+                <div id="hesaplamabuttondiv">
+                    <input type="button" onclick="hesapla()" value="HESAPLA" id="hesaplamabutton">
+                </div> 
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 id="sonbaslik">
+
+                    </h4>
+
+                    <p id="sonucmetni" >
+                        
+                    </p>
+                </div>
+
+            </div>    
+
+            
+
+
+
+
+
+        
+            <script src="app.js"></script>
+        </form>
+
+    </div>
+
+
+
+
+    <!--JS kodları-->
+
+    <!-- Bootstrap js scriptlari-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>
