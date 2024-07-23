@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematikteki Özel Sayıları Bulma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="genel-sayfa">
+
+        <div id="baslik">
+           <h1>Matematikteki Özel Sayıları Bulma</h1> 
+        </div>
+
+        <div class="kucuk-kutucuklar">
+            <table cellspacing="12" cellpadding="5" text-align="center">
+                <tr> 
+                    <th colspan="2"> <h3>Asal Sayı Kontrol Paneli</h3> </th>
+                </tr>
+
+                <tr>
+                    <td> <span class="yan-baslik"> Sayı Girişi: </span> </td>
+                    <td> <input type="number" id="sayiGiris"> </td> 
+                </tr>
+
+                <tr>
+                    <td> <span class="yan-baslik" > Cevap:  </span> </td>
+                    <td> <span id="cevap1"></span> </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"> <center> <button onclick="asal_sayi_bul()" class="kontrol-but"> Kontrol Et </button> </center> </td>
+                </tr>  
+            </table>
+        </div>
+
+
+        <div class="kucuk-kutucuklar">
+            <table cellspacing="12" cellpadding="5" text-align="center">
+                <tr> 
+                    <th colspan="2"> <h3>Mersenne Asal Sayıları</h3> </th>
+                </tr>
+
+                <tr>
+                    <td> <span class="yan-baslik"> Asal Sayı Girişi: </span> </td>
+                    <td> <input type="number" id="asalsayi"> </td> 
+                </tr>
+
+                <tr>
+                    <td> <span class="yan-baslik" > Cevap:  </span> </td>
+                    <td> <span id="cevap3"></span> </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"> <center> <button onclick="mersennebul()" class="kontrol-but"> Kontrol Et </button> </center> </td>
+                </tr>  
+            </table>
+        </div>
+
+
+
+        <div class="kucuk-kutucuklar">
+            <table cellspacing="12" cellpadding="5" text-align="center">
+                <tr> 
+                    <th colspan="2"> <h3>Mükemmel Sayıları</h3> </th>
+                </tr>
+
+                <tr>
+                    <td> <span class="yan-baslik"> Sayı Girişi: </span> </td>
+                    <td> <input type="number" id="mukemmel"> </td> 
+                </tr>
+
+                <tr>
+                    <td> <span class="yan-baslik" > Cevap:  </span> </td>
+                    <td> <span id="cevap4"></span> </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"> <center> <button onclick="mukemmelbul()" class="kontrol-but"> Kontrol Et </button> </center> </td>
+                </tr>  
+            </table>
+        </div>
+
+
+
+        <div class="kucuk-kutucuklar">
+            <table cellspacing="12" cellpadding="5" text-align="center">
+                <tr> 
+                    <th colspan="2"> <h3>İkiz Asallar Kontrol Paneli</h3> </th>
+                </tr>
+
+                <tr>
+                    <td> <span class="yan-baslik"> 1. Sayı Girişi: </span> </td>
+                    <td> <input type="number" id="ikizsayi1"> </td> 
+                </tr>
+
+                <tr cells>
+                    <td> <span class="yan-baslik"> 2. Sayı Girişi: </span> </td>
+                    <td> <input type="number" id="ikizsayi2"> </td> 
+                </tr>
+
+                <tr>
+                    <td> <span class="yan-baslik" > Cevap:  </span> </td>
+                    <td> <span id="cevap2"></span> </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"> <center> <button onclick="ikizleribul()" class="kontrol-but"> Kontrol Et </button> </center> </td>
+                </tr>  
+            </table>
+        </div>
+
+       
+
+ 
+
+
+
+    </div>
+    
+
+    <script src="app.js"></script>
+</body>
+</html>
