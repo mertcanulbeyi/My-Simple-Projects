@@ -1,33 +1,34 @@
-let metin, aciklama;
+// !Metni Alıp Kaydetme Olayı
 
-// Metni Alip Kaydetme 
 function metniAlma() {
-    // Görev ve açıklama metinlerini al
-    var gorevMetni = document.getElementById("gorevMetni").value;
-    var aciklamaMetni = document.getElementById("aciklamaMetni").value;
 
-    // Her iki giriş alanının da boş olmadığını kontrol et
-    if (gorevMetni.trim() !== "" && aciklamaMetni.trim() !== "") {
-        var li = document.createElement("li");
+    const gorevMetni = document.getElementById("gorevMetni").value.trim();
+    const aciklamaMetni = document.getElementById("aciklamaMetni").value.trim();
 
-        var button = document.createElement("button");
+
+    if (gorevMetni && aciklamaMetni) {
+        const li = document.createElement("li");
+
+
+        const button = document.createElement("button");
         button.type = "button";
         button.innerText = gorevMetni;
         button.className = "btn btn-aciklama";
+        button.setAttribute("data-index", document.querySelectorAll("ul li").length);
 
-        // Butona tıklandığında açıklamayı gösterecek bir fonksiyon ekle
-        var buttonIndex = document.querySelectorAll("ul li").length;
-        button.setAttribute("onclick", `aciklamayigoster(${buttonIndex})`);
-        button.id = `button${buttonIndex}`;
 
-        var p = document.createElement("p");
-        p.className = "aciklamalar";
+        const p = document.createElement("p");
+        p.className = "aciklamalar editable";
         p.innerText = aciklamaMetni;
+        p.style.display = "none"; 
+
 
         li.appendChild(button);
         li.appendChild(p);
 
+
         document.querySelector("ul").appendChild(li);
+
 
         // Inputları temizle
         document.getElementById("gorevMetni").value = "";
@@ -37,12 +38,50 @@ function metniAlma() {
     }
 }
 
-// Açıklamayı göster/gizle fonksiyonu
-function aciklamayigoster(index) {
-    var p = document.querySelectorAll(".aciklamalar")[index];
-    if (p.style.display === "none") {
-        p.style.display = "block";
-    } else {
-        p.style.display = "none";
+
+
+// ! Açıklamayı göster/gizle olayı
+
+document.querySelector("ul").addEventListener("click", function(event) {
+    if (event.target.classList.contains("btn-aciklama")) {
+        aciklamayigoster(event);
+    } 
+    
+    if (event.target.classList.contains("editable")) {
+        event.target.contentEditable = true;
+        event.target.focus();
+        event.target.addEventListener("blur", function() {
+            event.target.contentEditable = false;
+        });
     }
+});
+
+
+
+function aciklamayigoster(event) {
+    const button = event.target;
+    const index = button.getAttribute("data-index");
+    const p = document.querySelectorAll(".aciklamalar")[index];
+
+    p.style.display = p.style.display === "none" ? "block" : "none";
+}
+
+
+
+// ! Inputlar Arası Gezinme...
+
+document.querySelector("#gorevMetni").addEventListener("keyup", run);
+document.querySelector("#aciklamaMetni").addEventListener("keyup", run2);
+
+function run(e) {
+    if (e.key === "Enter" || e.key === "ArrowDown") {
+        document.querySelector("#aciklamaMetni").focus();       
+    }
+}
+
+function run2(e) {
+    if (e.key === "Enter") {
+        metniAlma();
+    }
+    else if (e.key === "ArrowUp")  document.querySelector("#gorevMetni").focus();  
 }
