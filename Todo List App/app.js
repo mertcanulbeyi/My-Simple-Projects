@@ -1,87 +1,136 @@
-// !Metni Alıp Kaydetme Olayı
 
-function metniAlma() {
+const form = document.querySelector("#todoAddForm");
+const todo = document.querySelector("#todoName");
+const todoContent = document.querySelector("#todoContent");
+const todoList = document.querySelector(".list-group");
+const button = document.querySelector("#todoAddButton");
+const cardBody2 = document.querySelectorAll(".card")[1];
 
-    const gorevMetni = document.getElementById("gorevMetni").value.trim();
-    const aciklamaMetni = document.getElementById("aciklamaMetni").value.trim();
+let todos = [];
+let contents = [];
 
+runEvents();
 
-    if (gorevMetni && aciklamaMetni) {
-        const li = document.createElement("li");
+function runEvents() {
+    button.addEventListener("click", addTodo);
+    document.addEventListener("DOMContentLoaded", sayfayukleme);
+    cardBody2.addEventListener("click", removetodo);   
+}
 
+function addTodo(e) {
+    const todoName = todo.value.trim();
+    const content = todoContent.value.trim();
 
-        const button = document.createElement("button");
-        button.type = "button";
-        button.innerText = gorevMetni;
-        button.className = "btn btn-aciklama";
-        button.setAttribute("data-index", document.querySelectorAll("ul li").length);
+    if(todoName == null || todoName == "") {
+        console.log("Todo ismi giriniz...");
 
-
-        const p = document.createElement("p");
-        p.className = "aciklamalar editable";
-        p.innerText = aciklamaMetni;
-        p.style.display = "none"; 
-
-
-        li.appendChild(button);
-        li.appendChild(p);
-
-
-        document.querySelector("ul").appendChild(li);
-
-
-        // Inputları temizle
-        document.getElementById("gorevMetni").value = "";
-        document.getElementById("aciklamaMetni").value = "";
-    } else {
-        alert("Lütfen görev ve açıklama alanlarını doldurun!");
     }
+    else {
+        // Görevi ekran gösterme
+        addTodotoUI(todoName, content);
+        // Görevi LocalStorage'e ekleme
+        addTodotoLocal(todoName, content);
+    }
+
+    e.preventDefault();
 }
 
 
+function addTodotoUI(x, y){
 
-// ! Açıklamayı göster/gizle olayı
+    /* <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    Subheading
+                </div>
+                <p> Content for list item </p>
+            </div>
+            ! <button type="button" class="btn-close" aria-label="Close"></button>
+        </li> */
 
-document.querySelector("ul").addEventListener("click", function(event) {
-    if (event.target.classList.contains("btn-aciklama")) {
-        aciklamayigoster(event);
-    } 
+    let li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-start";
     
-    if (event.target.classList.contains("editable")) {
-        event.target.contentEditable = true;
-        event.target.focus();
-        event.target.addEventListener("blur", function() {
-            event.target.contentEditable = false;
-        });
-    }
-});
+    let div1 = document.createElement("div");
+        div1.className = "ms-2 me-auto";
+    
+    let div2 = document.createElement("div");
+        div2.className = "fw-bold";
+        div2.textContent = x;
+    
+    let p = document.createElement("p");
+        p.textContent = y;
+        p.className = "todoAciklamalari";
+    
+    let button = document.createElement("button");
+        button.type = "button";
+        button.className = "btn-close";
+    
+    div1.appendChild(div2);
+    div1.appendChild(p);
 
+    li.appendChild(div1);
+    li.appendChild(button);
 
-
-function aciklamayigoster(event) {
-    const button = event.target;
-    const index = button.getAttribute("data-index");
-    const p = document.querySelectorAll(".aciklamalar")[index];
-
-    p.style.display = p.style.display === "none" ? "block" : "none";
+    todoList.appendChild(li);
 }
 
 
+function addTodotoLocal(x, y) {
+    localKontrol();
+    todos.push(x);
+    localStorage.setItem("todos", JSON.stringify(todos));
+    contents.push(y);
+    localStorage.setItem("contents", JSON.stringify(contents));
+}
 
-// ! Inputlar Arası Gezinme...
+function localKontrol() {
+    if (localStorage.getItem("todos") == null)  { todos = []; }
+    else { todos = JSON.parse(localStorage.getItem("todos")); }
 
-document.querySelector("#gorevMetni").addEventListener("keyup", run);
-document.querySelector("#aciklamaMetni").addEventListener("keyup", run2);
+    if (localStorage.getItem("contents") == null) { contents = []; }
+    else { contents = JSON.parse(localStorage.getItem("contents")); }
+}
 
-function run(e) {
-    if (e.key === "Enter" || e.key === "ArrowDown") {
-        document.querySelector("#aciklamaMetni").focus();       
+function sayfayukleme () {
+    localKontrol();
+    for(let i = 0; i < todos.length; i++)
+    {
+        addTodotoUI(todos[i], contents[i]);
     }
 }
 
-function run2(e) {
-    if (e.key === "Enter") {
-        metniAlma();
+function removetodo(e) {
+    if(e.target.className == "btn-close")
+    {
+        const todo = e.target.parentElement;
+        todo.remove();
     }
-    else if (e.key === "ArrowUp")  document.querySelector("#gorevMetni").focus();  
+
+    removeTodoFromStorage(e.target);
+}
+
+function removeTodoFromStorage(x) {
+    const removetodo = x.previousElementSibling.children[0].textContent;
+    const removecontent = x.previousElementSibling.children[1].textContent;
+
+    localKontrol();
+
+    todos.forEach(function(todo, index){
+        if (todo == removetodo){
+            todos.splice(index, 1);
+        }
+    });
+
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+    contents.forEach(function(content, index){
+        if(content == removecontent) {
+            contents.splice(index,1);
+        }
+    });
+
+    localStorage.setItem("contents", JSON.stringify(contents));
+
+
 }
