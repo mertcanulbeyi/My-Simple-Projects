@@ -20,7 +20,7 @@
             <h1>Yapılacaklar Listesi Uygulaması</h1>
         </div>
 
-        <div class="row">
+        <div class="row" style="margin-top: -15px;">
               <div class="card">
                   <div class="card-header">
                       <h3>Görev Ekleme Alanı </h3>
@@ -41,8 +41,13 @@
 
         <div class="row">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <h3>Todo List</h3>
+                    <span style="padding: 10px;">
+                      <label>Todo Araması Yapın: </label>
+                      <input type="text" class="" id="searchName" aria-describedby="todo"placeholder="Todo Giriniz">
+                      <button type="button" id="searchClearBtn" class="btn-close" aria-label="Close"></button>
+                    </span>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
