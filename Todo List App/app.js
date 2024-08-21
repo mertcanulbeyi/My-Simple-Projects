@@ -5,6 +5,8 @@ const todoContent = document.querySelector("#todoContent");
 const todoList = document.querySelector(".list-group");
 const button = document.querySelector("#todoAddButton");
 const cardBody2 = document.querySelectorAll(".card")[1];
+const searchClearbtn = document.querySelector("#searchClearBtn");
+const searchName = document.querySelector("#searchName");
 
 let todos = [];
 let contents = [];
@@ -15,6 +17,8 @@ function runEvents() {
     button.addEventListener("click", addTodo);
     document.addEventListener("DOMContentLoaded", sayfayukleme);
     cardBody2.addEventListener("click", removetodo);   
+    searchClearbtn.addEventListener("click", removeSearch);
+    searchName.addEventListener("keyup", searchTodo);
 }
 
 function addTodo(e) {
@@ -64,7 +68,7 @@ function addTodotoUI(x, y){
     
     let button = document.createElement("button");
         button.type = "button";
-        button.className = "btn-close";
+        button.className = "btn-close todoClear";
     
     div1.appendChild(div2);
     div1.appendChild(p);
@@ -85,10 +89,10 @@ function addTodotoLocal(x, y) {
 }
 
 function localKontrol() {
-    if (localStorage.getItem("todos") == null)  { todos = []; }
+    if (localStorage.getItem("todos") === null)  { todos = []; }
     else { todos = JSON.parse(localStorage.getItem("todos")); }
 
-    if (localStorage.getItem("contents") == null) { contents = []; }
+    if (localStorage.getItem("contents") === null) { contents = []; }
     else { contents = JSON.parse(localStorage.getItem("contents")); }
 }
 
@@ -101,7 +105,7 @@ function sayfayukleme () {
 }
 
 function removetodo(e) {
-    if(e.target.className == "btn-close")
+    if(e.target.classList.contains("todoClear"))
     {
         const todo = e.target.parentElement;
         todo.remove();
@@ -117,20 +121,43 @@ function removeTodoFromStorage(x) {
     localKontrol();
 
     todos.forEach(function(todo, index){
-        if (todo == removetodo){
+        if (todo === removetodo && contents[index] === removecontent) {
             todos.splice(index, 1);
+            contents.splice(index, 1);
         }
     });
 
     localStorage.setItem("todos", JSON.stringify(todos));
-
-    contents.forEach(function(content, index){
-        if(content == removecontent) {
-            contents.splice(index,1);
-        }
-    });
-
     localStorage.setItem("contents", JSON.stringify(contents));
+}
 
+function searchTodo() {
+    let searchText = searchName.value.toLowerCase().trim();
+
+    const allTodos = document.querySelectorAll(".list-group-item");
+    if(allTodos.length>0)
+    {
+        allTodos.forEach(todo=>{
+            if(todo.children[0].children[0].textContent.toLowerCase().trim().includes(searchText))
+            { 
+                todo.setAttribute("style","display : block");
+            }
+            else todo.setAttribute("style","display : none !important");
+        });
+    }
+    
+}
+
+function removeSearch() {
+    const allTodos = document.querySelectorAll(".list-group-item");
+
+    if(allTodos.length>0)
+    {
+        allTodos.forEach(todo=>{
+            todo.setAttribute("style","display : block");
+        });
+    }
+
+    searchName.value = "";
 
 }
