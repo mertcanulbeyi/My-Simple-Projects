@@ -9,7 +9,6 @@ const searchClearbtn = document.querySelector("#searchClearBtn");
 const searchName = document.querySelector("#searchName");
 
 let todos = [];
-let contents = [];
 
 runEvents();
 
@@ -82,25 +81,30 @@ function addTodotoUI(x, y){
 
 function addTodotoLocal(x, y) {
     localKontrol();
-    todos.push(x);
+
+    const todoNumber = todos.length + 1;
+    const todoName = `todo${todoNumber}`;
+    
+    let todo = {
+        id: todoName,  // Numaralandırılmış isim
+        name: x, 
+        content: y
+    }
+
+    todos.push(todo);
     localStorage.setItem("todos", JSON.stringify(todos));
-    contents.push(y);
-    localStorage.setItem("contents", JSON.stringify(contents));
 }
 
 function localKontrol() {
-    if (localStorage.getItem("todos") === null)  { todos = []; }
-    else { todos = JSON.parse(localStorage.getItem("todos")); }
-
-    if (localStorage.getItem("contents") === null) { contents = []; }
-    else { contents = JSON.parse(localStorage.getItem("contents")); }
+    if (localStorage.getItem("todos") == null) todos= [];
+    else{ todos = JSON.parse(localStorage.getItem("todos")); }
 }
 
 function sayfayukleme () {
     localKontrol();
     for(let i = 0; i < todos.length; i++)
     {
-        addTodotoUI(todos[i], contents[i]);
+        addTodotoUI(todos[i].name, todos[i].content);
     }
 }
 
@@ -111,24 +115,21 @@ function removetodo(e) {
         todo.remove();
     }
 
-    removeTodoFromStorage(e.target);
+    removeTodoFromStorage(e.target.parentElement);
 }
 
-function removeTodoFromStorage(x) {
-    const removetodo = x.previousElementSibling.children[0].textContent;
-    const removecontent = x.previousElementSibling.children[1].textContent;
+function removeTodoFromStorage(todoElement) {
+    const removetodo = todoElement.children[0].children[0].textContent;
 
     localKontrol();
 
     todos.forEach(function(todo, index){
-        if (todo === removetodo && contents[index] === removecontent) {
+        if (todo.name == removetodo) {
             todos.splice(index, 1);
-            contents.splice(index, 1);
         }
     });
 
     localStorage.setItem("todos", JSON.stringify(todos));
-    localStorage.setItem("contents", JSON.stringify(contents));
 }
 
 function searchTodo() {
